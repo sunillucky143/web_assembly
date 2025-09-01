@@ -140,7 +140,6 @@ const ParametersPanel: React.FC = () => {
         
         {activeTab === 'apis' && (
           <APIsTab
-            component={selectedComponent}
             onAddParameter={handleAddParameter}
             onDeleteParameter={handleDeleteParameter}
             onEditParameter={handleEditParameter}
@@ -258,11 +257,10 @@ const OutputsTab: React.FC<{
 
 // APIs Tab Component - Shows external API connections
 const APIsTab: React.FC<{
-  component: ComponentDefinition;
   onAddParameter: () => void;
   onDeleteParameter: (id: string) => void;
   onEditParameter: (id: string) => void;
-}> = ({ component, onAddParameter, onDeleteParameter, onEditParameter }) => {
+}> = ({ onAddParameter, onDeleteParameter, onEditParameter }) => {
   // Mock API connections for now
   const mockAPIs = [
     { 
@@ -382,7 +380,8 @@ const AddParameterModal: React.FC<{
 }> = ({ onSave, onCancel, type }) => {
   const [formData, setFormData] = useState({
     name: '',
-    type: 'string',
+    type: 'input' as 'input' | 'output' | 'api',
+    dataType: 'string' as 'string' | 'number' | 'boolean' | 'object' | 'array',
     description: '',
     required: false,
     endpoint: '',
@@ -391,7 +390,15 @@ const AddParameterModal: React.FC<{
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSave(formData);
+    onSave({
+      name: formData.name,
+      type: formData.type,
+      dataType: formData.dataType,
+      description: formData.description,
+      required: formData.required,
+      endpoint: formData.endpoint,
+      defaultValue: formData.defaultValue,
+    });
   };
 
   const handleChange = (field: string, value: any) => {
@@ -419,11 +426,24 @@ const AddParameterModal: React.FC<{
           </div>
           
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Type</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Parameter Type</label>
             <select
               value={formData.type}
-              onChange={(e) => handleChange('type', e.target.value)}
+              onChange={(e) => handleChange('type', e.target.value as 'input' | 'output' | 'api')}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="input">Input</option>
+              <option value="output">Output</option>
+              <option value="api">API</option>
+            </select>
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Data Type</label>
+            <select
+              value={formData.dataType}
+              onChange={(e) => handleChange('dataType', e.target.value as 'string' | 'number' | 'boolean' | 'object' | 'array')}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500"
             >
               <option value="string">String</option>
               <option value="number">Number</option>

@@ -55,7 +55,7 @@ const WorkspaceNode: React.FC<WorkspaceNodeProps> = ({
     setIsResizing(false);
   }, []);
 
-  const handleResizeStart = useCallback((e: React.MouseEvent, corner: string) => {
+  const handleResizeStart = useCallback((e: React.MouseEvent) => {
     e.stopPropagation();
     setIsResizing(true);
     setResizeStart({
@@ -270,22 +270,22 @@ const WorkspaceNode: React.FC<WorkspaceNodeProps> = ({
           {/* Top-left corner */}
           <div
             className="absolute top-0 left-0 w-3 h-3 bg-blue-500 rounded-full cursor-nw-resize"
-            onMouseDown={(e) => handleResizeStart(e, 'nw')}
+            onMouseDown={handleResizeStart}
           />
           {/* Top-right corner */}
           <div
             className="absolute top-0 right-0 w-3 h-3 bg-blue-500 rounded-full cursor-ne-resize"
-            onMouseDown={(e) => handleResizeStart(e, 'ne')}
+            onMouseDown={handleResizeStart}
           />
           {/* Bottom-left corner */}
           <div
             className="absolute bottom-0 left-0 w-3 h-3 bg-blue-500 rounded-full cursor-sw-resize"
-            onMouseDown={(e) => handleResizeStart(e, 'sw')}
+            onMouseDown={handleResizeStart}
           />
           {/* Bottom-right corner */}
           <div
             className="absolute bottom-0 right-0 w-3 h-3 bg-blue-500 rounded-full cursor-se-resize"
-            onMouseDown={(e) => handleResizeStart(e, 'se')}
+            onMouseDown={handleResizeStart}
           />
         </>
       )}

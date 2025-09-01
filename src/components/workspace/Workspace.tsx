@@ -4,7 +4,7 @@ import { useUIState } from '../../contexts/UIStateContext';
 import WorkspaceNode from './WorkspaceNode';
 import WireConnection from './WireConnection';
 import WorkspaceCanvas from './WorkspaceCanvas';
-import { WorkspaceNode as WorkspaceNodeType, WireConnection as WireConnectionType } from '../../types';
+import { WorkspaceNode as WorkspaceNodeType } from '../../types';
 
 const Workspace: React.FC = () => {
   const { state: projectState, dispatch } = useProject();
