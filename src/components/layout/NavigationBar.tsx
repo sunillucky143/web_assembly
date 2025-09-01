@@ -5,7 +5,7 @@ import { useUIState } from '../../contexts/UIStateContext';
 
 const NavigationBar: React.FC = () => {
   const { state: projectState } = useProject();
-  const { state: uiState, dispatch } = useUIState();
+  const { dispatch } = useUIState();
 
   const handleAddPage = () => {
     // TODO: Implement add page functionality

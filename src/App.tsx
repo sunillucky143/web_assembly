@@ -1,4 +1,4 @@
-import React from 'react';
+// React import not needed in modern React with JSX transform
 import { BrowserRouter as Router } from 'react-router-dom';
 import MainLayout from './components/layout/MainLayout';
 import { ProjectProvider } from './contexts/ProjectContext';

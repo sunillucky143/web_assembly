@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Palette, Type, Ruler, Layers, Eye } from 'lucide-react';
+import { Palette, Type, Ruler, Eye } from 'lucide-react';
 import { useProject } from '../../contexts/ProjectContext';
 import { useUIState } from '../../contexts/UIStateContext';
-import { CustomizationOption } from '../../types';
+// CustomizationOption not currently used
 
 const CustomizationPanel: React.FC = () => {
   const { state: projectState, dispatch } = useProject();
@@ -194,7 +194,7 @@ const StyleTab: React.FC<{
   node: any;
   component: any;
   onChange: (property: string, value: string) => void;
-}> = ({ node, component, onChange }) => {
+}> = ({ node, onChange }) => {
   const [colorValue, setColorValue] = useState(node.styles?.backgroundColor || '#3b82f6');
   const [borderRadius, setBorderRadius] = useState(node.styles?.borderRadius?.replace('px', '') || '8');
   const [shadow, setShadow] = useState(node.styles?.boxShadow || 'none');

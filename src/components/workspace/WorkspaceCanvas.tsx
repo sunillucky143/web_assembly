@@ -25,7 +25,6 @@ const WorkspaceCanvas = forwardRef<HTMLDivElement, WorkspaceCanvasProps>(
       } else if (ref) {
         ref.current = node;
       }
-      canvasRef.current = node;
     };
 
     // Handle mouse wheel for zooming
