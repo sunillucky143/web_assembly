@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    @apply h-full overflow-hidden;
+  }
+  
+  #root {
+    @apply h-full;
+  }
+}
+
+@layer components {
+  .workspace-canvas {
+    @apply bg-gray-50 border border-gray-200 rounded-lg;
+  }
+  
+  .component-palette {
+    @apply bg-white border border-gray-200 rounded-lg shadow-sm;
+  }
+  
+  .customization-panel {
+    @apply bg-white border border-gray-200 rounded-lg shadow-sm;
+  }
+  
+  .parameters-panel {
+    @apply bg-white border border-gray-200 rounded-lg shadow-sm;
+  }
+  
+  .wire-connection {
+    @apply stroke-blue-500 stroke-2 fill-none;
+  }
+  
+  .component-node {
+    @apply cursor-move select-none;
+  }
+  
+  .component-node.selected {
+    @apply ring-2 ring-blue-500 ring-opacity-50;
+  }
+}
